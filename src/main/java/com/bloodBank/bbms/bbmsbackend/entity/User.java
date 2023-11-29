@@ -1,8 +1,10 @@
 package com.bloodBank.bbms.bbmsbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 
 @Data
@@ -53,9 +55,14 @@ public class User {
     @Column(name = "sex", length = 10)
     private String sex;
 
+    @Column(name = "last_donated_date")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date lastDonated;
 
 
-    public User(String email, String password, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex) {
+
+
+    public User(String email, String password, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex, Date lastDonated) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -68,6 +75,7 @@ public class User {
         this.bloodGroup = bloodGroup;
         this.age = age;
         this.sex = sex;
+        this.lastDonated =lastDonated;
     }
 
 

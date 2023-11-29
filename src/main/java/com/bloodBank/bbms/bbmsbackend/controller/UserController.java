@@ -15,20 +15,27 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 @Autowired
 private UserService userService;
-    @PostMapping(path = "/save")
+    @PostMapping(path = "/user/save")
     public String saveUser(@RequestBody SignUpDto signUpDto)
     {
         String id = userService.addUser(signUpDto);
         return id;
     }
 
-    @PostMapping(path = "/login")
+    @PostMapping(path = "/user/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDto)
     {
         LoginResponse loginResponse = userService.loginUser(loginDto);
         return ResponseEntity.ok(loginResponse);
     }
+    @PostMapping(path = "/admin/login")
+    public ResponseEntity<?> loginadmin(@RequestBody LoginDto loginDto)
+    {
+        LoginResponse loginResponse = userService.loginUser(loginDto);
+        System.out.println("NewOne"+loginResponse.getMessage());
 
+        return ResponseEntity.ok(loginResponse);
+    }
     @GetMapping(path = "/test")
     public String demo(){
 

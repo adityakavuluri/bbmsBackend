@@ -1,6 +1,9 @@
 package com.bloodBank.bbms.bbmsbackend.dto;
 
 import lombok.Data;
+
+import java.util.Date;
+
 @Data
 public class SignUpDto {
 
@@ -29,4 +32,6 @@ public class SignUpDto {
     private Integer age;
 
     private String sex;
+
+    private Date lastDonated;
 }
