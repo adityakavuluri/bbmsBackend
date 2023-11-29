@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
         User user = new User(
                 signUpDto.getEmail(),
                 this.passwordEncoder.encode(signUpDto.getPassword()),
+                //signUpDto.getPassword(),
                 signUpDto.getFirstName(),
                 signUpDto.getLastName(),
                 signUpDto.getAddress(),
@@ -37,6 +38,8 @@ public class UserServiceImpl implements UserService {
                 signUpDto.getAge(),
                 signUpDto.getSex()
         );
+System.out.println(user.getPassword()+"ram");
+        System.out.println(user.getSex()+"ram");
 
         userRepository.save(user);
 
