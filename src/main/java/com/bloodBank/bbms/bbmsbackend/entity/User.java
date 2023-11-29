@@ -1,18 +1,21 @@
 package com.bloodBank.bbms.bbmsbackend.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-import javax.persistence.*;
-import java.util.Date;
+import lombok.NoArgsConstructor;
+
 
 @Data
 @Entity
+//@AllArgsConstructor
+@NoArgsConstructor
+//@DynamicUpdate
 @Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, unique = true, length = 45)
     private String email;
@@ -50,10 +53,7 @@ public class User {
     @Column(name = "sex", length = 10)
     private String sex;
 
-    @Column(name = "last_donated")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date lastDonated;
+
 
     public User(String email, String encode, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex) {
         this.email = email;
@@ -69,6 +69,7 @@ public class User {
         this.age = age;
         this.sex = sex;
     }
+
 
 
 }

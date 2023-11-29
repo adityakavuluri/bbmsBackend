@@ -1,9 +1,10 @@
 package com.bloodBank.bbms.bbmsbackend.dto;
 
 import lombok.Data;
-import java.util.Date;
 @Data
 public class SignUpDto {
+
+    private Integer id;
 
     private String email;
 
