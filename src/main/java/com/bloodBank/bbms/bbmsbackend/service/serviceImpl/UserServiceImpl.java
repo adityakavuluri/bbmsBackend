@@ -47,13 +47,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public LoginResponse loginUser(LoginDto loginDto) {
         String msg = "";
-        User user1 = userRepository.findByEmail(signUpDto.getEmail());
+        User user1 = userRepository.findByEmail(loginDto.getEmail());
         if (user1 != null) {
-            String password = signUpDto.getPassword();
+            String password = loginDto.getPassword();
             String encodedPassword = user1.getPassword();
             Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
             if (isPwdRight) {
-                Optional<User> user = userRepository.findOneByEmailAndPassword(signUpDto.getEmail(), encodedPassword);
+                Optional<User> user = userRepository.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
                 if (user.isPresent()) {
                     return new LoginResponse("Login Success", true);
                 } else {
