@@ -28,18 +28,17 @@ private UserService userService;
         return id;
     }
 
-    @PostMapping(path = "/user/login")
+    @PostMapping(path = "/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginDto loginDto)
     {
         LoginResponse loginResponse = userService.loginUser(loginDto);
         return ResponseEntity.ok(loginResponse);
     }
-    @PostMapping(path = "/admin/login")
-    public ResponseEntity<?> loginadmin(@RequestBody LoginDto loginDto)
-    {
-        LoginResponse loginResponse = userService.loginUser(loginDto);
-        System.out.println("NewOne"+loginResponse.getMessage());
-
+//    @PostMapping(path = "/admin/login")
+//    public ResponseEntity<?> loginadmin(@RequestBody LoginDto loginDto) {
+//        LoginResponse loginResponse = userService.loginUser(loginDto);
+//        System.out.println("NewOne" + loginResponse.getMessage());
+//    }
 
     @PostMapping(path = "/bookAppointment")
     public String bookDonorAppointment(@RequestBody AppointmentDto appointmentDto)

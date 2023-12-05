@@ -62,7 +62,7 @@ public class User {
 
 
 
-    public User(String email, String password, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex, Date lastDonated) {
+    public User(String email, String password, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex) {
 
         this.email = email;
         this.password = password;
@@ -76,7 +76,7 @@ public class User {
         this.bloodGroup = bloodGroup;
         this.age = age;
         this.sex = sex;
-        this.lastDonated =lastDonated;
+
     }
 
 
