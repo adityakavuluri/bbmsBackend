@@ -1,6 +1,9 @@
 package com.bloodBank.bbms.bbmsbackend.dto;
 
 import lombok.Data;
+
+import java.util.Date;
+
 @Data
 public class SignUpDto {
 
@@ -30,6 +33,7 @@ public class SignUpDto {
 
     private String sex;
 
+
     public SignUpDto(Integer id, String email, String password, String firstName, String lastName, String address, String country, Integer pincode, String phone, String medicalHistory, String bloodGroup, Integer age, String sex) {
         this.id = id;
         this.email = email;
@@ -45,4 +49,5 @@ public class SignUpDto {
         this.age = age;
         this.sex = sex;
     }
+
 }

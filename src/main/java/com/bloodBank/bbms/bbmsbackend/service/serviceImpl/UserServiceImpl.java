@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         User user = new User(
                 signUpDto.getEmail(),
                 this.passwordEncoder.encode(signUpDto.getPassword()),
+                //signUpDto.getPassword(),
                 signUpDto.getFirstName(),
                 signUpDto.getLastName(),
                 signUpDto.getAddress(),
@@ -52,8 +53,11 @@ public class UserServiceImpl implements UserService {
                 signUpDto.getMedicalHistory(),
                 signUpDto.getBloodGroup(),
                 signUpDto.getAge(),
-                signUpDto.getSex()
+                signUpDto.getSex(),
+                signUpDto.getLastDonated()
         );
+System.out.println(user.getPassword()+"ram");
+        System.out.println(user.getSex()+"ram");
 
         userRepository.save(user);
 
