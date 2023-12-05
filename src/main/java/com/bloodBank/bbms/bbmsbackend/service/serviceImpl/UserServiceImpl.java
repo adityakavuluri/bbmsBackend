@@ -53,11 +53,7 @@ public class UserServiceImpl implements UserService {
                 signUpDto.getMedicalHistory(),
                 signUpDto.getBloodGroup(),
                 signUpDto.getAge(),
-                signUpDto.getSex(),
-                signUpDto.getLastDonated()
-        );
-System.out.println(user.getPassword()+"ram");
-        System.out.println(user.getSex()+"ram");
+                signUpDto.getSex());
 
         userRepository.save(user);
 
