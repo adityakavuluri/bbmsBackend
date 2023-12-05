@@ -6,7 +6,6 @@ Unit tests are covered when we run the project on spring boot, if we want to run
 ![image](https://github.com/adityakavuluri/bbmsBackend/assets/143106378/1e38026b-890e-4982-ad56-96e2aa353e0c)
 
 
-![image](https://github.com/adityakavuluri/bbmsBackend/assets/142929062/e70e3580-d8a5-4128-8728-1eadaaa8a47c)
 
 
 
@@ -72,6 +71,9 @@ o	Click on the "Login" button.
 •	Postconditions:
 o	Ensure the user's login status is correctly reflected in the system.
 o	Verify that the user has appropriate access to the dashboard upon successful login.
+
+![image](https://github.com/adityakavuluri/bbmsBackend/assets/142929062/e70e3580-d8a5-4128-8728-1eadaaa8a47c)
+
 
 
 
