@@ -18,11 +18,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -192,4 +192,73 @@ class UserServiceImplTest {
         verify(bloodBankDataRepository).findByBloodTypeAndQuantityGreaterThanEqual(anyString(), anyString());
     }
 
+    @Test
+    public void testGetPastDonorData() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Prepare data
+        Appointment pastAppointment = new Appointment(
+                1, // ID
+                "John Doe", // Name
+                "A+", // Blood type
+                dateFormat.format(new Date(System.currentTimeMillis() - 86400000)), // Date in the past
+                12, // Age
+                "johndoe@example.com", // Email
+                "None", // Previous Medical Injuries
+                "500ml", // Blood Amount
+                "30", // Blood Pressure (or any other relevant field)
+                "City Hospital", // Location
+                "Donor" // Role
+        );
+
+        Appointment futureAppointment = new Appointment(
+                2, // Different ID
+                "Jane Doe", // Different Name
+                "B+", // Different Blood type
+                dateFormat.format(new Date(System.currentTimeMillis() + 86400000)), // Date in the future
+                14, // Different Age
+                "janedoe@example.com", // Different Email
+                "None",
+                "500ml",
+                "30",
+                "City Clinic", // Different Location
+                "Donor"
+        );
+
+        List<Appointment> allAppointments = new ArrayList<>();
+        allAppointments.add(pastAppointment);
+        allAppointments.add(futureAppointment);
+
+        // Mock behavior
+        when(appointmentRepository.findByRole("donor")).thenReturn(allAppointments);
+
+        // Execute
+        List<Appointment> result = userService.getPastDonorData();
+
+        // Validate
+        assertEquals(1, result.size());
+        assertTrue(result.contains(pastAppointment));
+    }
+    @Test
+    public void testGetAdminPastAppointments() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Prepare data
+        List<Appointment> allAppointments = new ArrayList<>();
+        Appointment pastAppointment = new Appointment(1, "John Doe", "A+", dateFormat.format(new Date(System.currentTimeMillis() - 86400000)), 12, "johndoe@example.com", "None", "500ml", "30", "City Hospital", "Donor");
+        Appointment futureAppointment = new Appointment(2, "Jane Doe", "B+", dateFormat.format(new Date(System.currentTimeMillis() + 86400000)), 14, "janedoe@example.com", "None", "500ml", "30", "City Clinic", "Donor");
+
+        allAppointments.add(pastAppointment);
+        allAppointments.add(futureAppointment);
+
+        // Mock behavior
+        when(appointmentRepository.findAll()).thenReturn(allAppointments);
+
+        // Execute
+        List<Appointment> result = userService.getAdminPastAppointments();
+
+        // Validate
+        assertEquals(1, result.size());
+        assertTrue(result.contains(pastAppointment));
+    }
 }
+
+
