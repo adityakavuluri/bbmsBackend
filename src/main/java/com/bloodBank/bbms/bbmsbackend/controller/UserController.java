@@ -84,6 +84,14 @@ private UserService userService;
     }
 
 
+    @GetMapping("/pastDonorAppointments")
+    public ResponseEntity<List<Appointment>> getPastDonors() {
+        List<Appointment> pastDonorData = userService.getPastDonorData();
+        return ResponseEntity.ok(pastDonorData);
+    }
+
+
+
     @GetMapping(path = "/test")
     public String demo(){
 

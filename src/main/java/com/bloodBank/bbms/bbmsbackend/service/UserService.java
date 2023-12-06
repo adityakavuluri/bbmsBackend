@@ -22,6 +22,6 @@ public interface UserService {
     List<Appointment> getAdminNewAppointments();
     List<Appointment> getAdminPastAppointments();
     List<Appointment> getDonorData();
-
+    List<Appointment> getPastDonorData();
 
 }
