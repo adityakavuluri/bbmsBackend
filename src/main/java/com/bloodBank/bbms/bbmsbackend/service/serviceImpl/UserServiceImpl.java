@@ -174,6 +174,26 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public List<Appointment> getPastDonorData() {
+        List<Appointment> appointmentsPastDonor = appointmentRepository.findByRole("donor");
+        List<Appointment> pastDonorAppointments = new ArrayList<>();
+
+        for (Appointment appointment : appointmentsPastDonor) {
+            try {
+                Date appointmentDate = new SimpleDateFormat(DATE_FORMAT).parse(appointment.getDateNeeded());
+
+                if (appointmentDate.before(new Date())) {
+                    pastDonorAppointments.add(appointment);
+                }
+            } catch (ParseException e) {
+
+                e.printStackTrace();
+            }
+        }
+
+        return pastDonorAppointments;
+    }
+
 
 
     public String checkBloodAvailability( String bloodType, String quantity) {
