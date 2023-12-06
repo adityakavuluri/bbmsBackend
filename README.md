@@ -4,7 +4,8 @@
 - if we want to run the unit testcases manually we need to right click on the project -> Click on "run test cases"
 
 
-![image](https://github.com/adityakavuluri/bbmsBackend/assets/143106378/62e40eb8-beb0-4ebf-a2bb-42df06129d18)
+![image](https://github.com/adityakavuluri/bbmsBackend/assets/143106378/abba2316-2093-4ddc-8658-d9f3aca33156)
+
 
 
 
